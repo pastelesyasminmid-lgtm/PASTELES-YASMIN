@@ -1,5 +1,5 @@
 // ====== Configura tu WhatsApp aquí ======
-const WHATSAPP_NUMBER = "529991207724"; // Ej: 52 + tu número (sin +), CDMX: 5255XXXXXXXX
+const WHATSAPP_NUMBER = "529993352956"; // Ej: 52 + tu número (sin +), CDMX: 5255XXXXXXXX
 const SHIPPING_COST = 60; // cambia a 0 si no cobras envío
 
 const products = [
@@ -318,4 +318,5 @@ function loadCart(){
 applyFilters();
 
 renderCart();
+
 
