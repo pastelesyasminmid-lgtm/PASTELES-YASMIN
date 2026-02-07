@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PASTELES YASMIN | Pasteles por encargo</title>
+  <meta name="description" content="Pasteles artesanales por encargo. Pedidos por WhatsApp." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="#inicio">
+        <span class="brand__logo">🍰</span>
+        <span class="brand__name">PASTELES YASMIN</span>
+      </a>
+
+      <nav class="nav">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <button class="cart-btn" id="openCart" aria-label="Abrir carrito">
+        🛒 <span id="cartCount" class="badge">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="inicio">
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <h1>Pasteles artesanales para cada ocasión</h1>
+          <p>
+            Cumpleaños, bodas, eventos y antojos. Elige tu favorito, agrégalo al carrito y
+            pide por WhatsApp en 1 minuto.
+          </p>
+
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="#catalogo">Ver catálogo</a>
+            <a class="btn btn--ghost" href="#contacto">Pedir cotización</a>
+          </div>
+
+          <div class="hero__badges">
+            <span class="pill">📦 Entrega a domicilio ** Aplican Restricciones</span>
+            <span class="pill">🎂 Personalización</span>
+            <span class="pill">🧁 Ingredientes frescos</span>
+          </div>
+        </div>
+
+        <div class="hero__card">
+          <div class="hero__img" role="img" aria-label="Pastel decorado"></div>
+          <div class="hero__cardtext">
+            <strong>Promo:</strong> 10% en tu primer pedido <span class="muted">(solo esta semana)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATALOGO -->
+    <section id="catalogo" class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Catálogo</h2>
+          <div class="filters">
+            <input id="searchInput" class="input" placeholder="Buscar pastel… (ej. chocolate)" />
+            <select id="categorySelect" class="input">
+              <option value="all">Todas las categorías</option>
+              <option value="clasicos">Clásicos</option>
+              <option value="premium">Premium</option>
+              <option value="cupcakes">Cupcakes</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="productGrid" class="grid"></div>
+      </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section id="como-funciona" class="section section--alt">
+      <div class="container">
+        <h2>Cómo funciona</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step__icon">1</div>
+            <h3>Elige tu pastel</h3>
+            <p>Explora el catálogo y agrega al carrito.</p>
+          </div>
+          <div class="step">
+            <div class="step__icon">2</div>
+            <h3>Personaliza</h3>
+            <p>Indica sabor, dedicatoria, tamaño y fecha.</p>
+          </div>
+          <div class="step">
+            <div class="step__icon">3</div>
+            <h3>Confirma por WhatsApp</h3>
+            <p>Te enviamos el resumen del pedido y métodos de pago.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="section">
+      <div class="container contact">
+        <div class="contact__info">
+          <h2>Contacto</h2>
+          <p class="muted">
+            ¿Quieres un pastel personalizado? Escríbenos y te cotizamos rápido.
+          </p>
+
+          <div class="contact__cards">
+            <div class="info-card">
+              <strong>📍 Zona de entrega</strong>
+              <p class="muted">Sur de Mérida y pasar a recoger (según cobertura)</p>
+            </div>
+            <div class="info-card">
+              <strong>⏱️ Horarios</strong>
+              <p class="muted">Lun–Sáb 10:00–18:00</p>
+            </div>
+            <div class="info-card">
+              <strong>💬 WhatsApp</strong>
+              <p class="muted"><a id="whatsLink" href="#" target="_blank" rel="noopener">Abrir chat</a></p>
+            </div>
+          </div>
+        </div>
+
+        <form class="form" id="contactForm">
+          <label>
+            Nombre
+            <input class="input" name="name" required placeholder="Tu nombre" />
+          </label>
+          <label>
+            Teléfono
+            <input class="input" name="phone" required placeholder="55 0000 0000" />
+          </label>
+          <label>
+            Mensaje
+            <textarea class="input" name="message" rows="4" required placeholder="Cuéntanos qué pastel necesitas…"></textarea>
+          </label>
+          <button class="btn btn--primary" type="submit">Enviar</button>
+          <p class="tiny muted">Al enviar, se abrirá WhatsApp con tu mensaje listo.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- CART DRAWER -->
+  <aside class="drawer" id="cartDrawer" aria-hidden="true">
+    <div class="drawer__overlay" id="closeCartOverlay"></div>
+    <div class="drawer__panel" role="dialog" aria-label="Carrito de compras">
+      <div class="drawer__head">
+        <h3>Tu carrito</h3>
+        <button class="icon-btn" id="closeCart" aria-label="Cerrar">✕</button>
+      </div>
+
+      <div id="cartItems" class="cart-items"></div>
+
+      <div class="cart-footer">
+        <div class="row">
+          <span class="muted">Subtotal</span>
+          <strong id="cartSubtotal">$0</strong>
+        </div>
+        <div class="row">
+          <span class="muted">Envío</span>
+          <strong id="cartShipping">$0</strong>
+        </div>
+        <div class="row row--total">
+          <span>Total</span>
+          <strong id="cartTotal">$0</strong>
+        </div>
+
+        <label class="tiny muted">
+          Notas / personalización (opcional)
+          <textarea id="orderNotes" class="input" rows="2" placeholder="Ej. ‘Feliz cumple Ana’, 20 personas, entrega viernes…"></textarea>
+        </label>
+
+        <button class="btn btn--primary" id="checkoutBtn">Pedir por WhatsApp</button>
+        <button class="btn btn--ghost" id="clearCartBtn">Vaciar carrito</button>
+      </div>
+    </div>
+  </aside>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="muted">© <span id="year"></span> Pasteles Yasmin Disfruta un Dulce Momento. Hecho con ❤️</p>
+      <p class="muted">Instagram: <a href="#" aria-label="Instagram">/Yasmin Tun</a></p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
